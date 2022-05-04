@@ -1,4 +1,4 @@
-# Public Bikes sample app
+# Bici sample app
 
 With this app you can find available bikes and e-bikes near to you. The app allows you
 to locate bikes in a database that containes real time info of the public bicycle
