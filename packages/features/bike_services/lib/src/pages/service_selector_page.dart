@@ -63,8 +63,7 @@ class ServiceSelectorPage extends StatelessWidget {
                     return ListTile(
                       title: Text(service.cityName),
                       subtitle: Text(service.serviceName),
-                      onTap: () => IntentLauncher.go(
-                          context, const BikeServiceStations()),
+                      onTap: () => context.go(const BikeServiceStations()),
                     );
                   },
                   itemCount: _services.length,

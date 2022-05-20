@@ -5,8 +5,10 @@ export 'src/intent_launcher.dart' show IntentLauncher;
 export 'src/intents/navigation_intent.dart' show NavigationIntent;
 
 // Extensions
-export 'src/intent_launcher_widget_wrapper.dart'
-    show IntentLauncherWidgetWrapper;
+export 'src/extensions/build_context_extension.dart'
+    show BuildContextExtension;
+export 'src/extensions/widget_extension.dart'
+    show WidgetExtension;
 
 // Exceptions
 export 'src/intent_not_registered_exception.dart'
