@@ -1,8 +1,11 @@
+import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:flutter/material.dart';
+
+import '../../navigation_intents.dart';
 
 class Service {
   final String cityName;
-  final String  serviceName;
+  final String serviceName;
 
   const Service({
     required this.cityName,
@@ -60,7 +63,8 @@ class ServiceSelectorPage extends StatelessWidget {
                     return ListTile(
                       title: Text(service.cityName),
                       subtitle: Text(service.serviceName),
-                      onTap: () => Navigator.pushNamed(context, '/stations'),
+                      onTap: () => IntentLauncher.go(
+                          context, const BikeServiceStations()),
                     );
                   },
                   itemCount: _services.length,

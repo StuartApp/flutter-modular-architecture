@@ -2,23 +2,16 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   _core:
-    dependency: transitive
-    description:
-      path: "packages/shared/all/core"
-      relative: true
-    source: path
-    version: "0.0.0"
-  _features_bike_services:
     dependency: "direct main"
     description:
-      path: "packages/features/bike_services"
+      path: "../../shared/all/core"
       relative: true
     source: path
     version: "0.0.0"
   _intent_launcher:
     dependency: "direct main"
     description:
-      path: "packages/shared/features/intent_launcher"
+      path: "../../shared/features/intent_launcher"
       relative: true
     source: path
     version: "0.0.0"
@@ -71,13 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  distance:
-    dependency: "direct main"
-    description:
-      name: distance
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -103,7 +89,7 @@ packages:
     source: sdk
     version: "0.0.0"
   get_it:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: get_it
       url: "https://pub.dartlang.org"

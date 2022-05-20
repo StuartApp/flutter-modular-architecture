@@ -1,0 +1,1 @@
+class IntentNotRegisteredException implements Exception {}
