@@ -1,9 +1,7 @@
-name: flutter_modular_architecture
-description: Sample project of a modular architecture for Flutter apps
+name: _bike_stations_features
+description: Bike stations features
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-version: 1.0.0+1
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
@@ -12,14 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  get_it: ^7.2.0
+  distance: ^1.0.0
 
   _intent_launcher:
-    path: packages/shared/features/intent_launcher
-  _features_bike_services:
-    path: packages/features/bike_services
-  _bike_stations_features:
-    path: packages/features/bike_stations
+    path: ../../shared/features/intent_launcher
 
 dev_dependencies:
   flutter_test:

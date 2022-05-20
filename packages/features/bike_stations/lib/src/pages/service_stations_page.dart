@@ -1,6 +1,8 @@
+import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:distance/distance.dart';
 import 'package:flutter/material.dart';
 
+import '../../navigation_intents.dart';
 import '../models/station.dart';
 import '../widgets/station_list_item.dart';
 
@@ -55,7 +57,7 @@ class ServiceStationsPage extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.star),
           tooltip: 'Favorite stations',
-          onPressed: () => Navigator.pushNamed(context, '/stations/favorites'),
+          onPressed: () => context.go(const FavoriteBikeStations()),
         ),
       ],
     );

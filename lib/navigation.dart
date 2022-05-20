@@ -1,14 +1,16 @@
+import 'package:_bike_stations_features/bike_stations_features.dart';
+import 'package:_bike_stations_features/navigation_intents.dart';
 import 'package:_features_bike_services/features_bike_services.dart';
 import 'package:_features_bike_services/navigation_intents.dart';
 import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/favorite_stations_page.dart';
-import 'pages/service_stations_page.dart';
-
 final _launcher = IntentLauncher()
   ..onNavigationIntent<BikeServiceStations>((context) {
     return Navigator.pushNamed(context, '/stations');
+  })
+  ..onNavigationIntent<FavoriteBikeStations>((context) {
+    return Navigator.pushNamed(context, '/stations/favorites');
   });
 
 final Map<String, WidgetBuilder> routes = {
