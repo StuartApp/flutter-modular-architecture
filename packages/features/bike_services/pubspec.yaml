@@ -1,4 +1,4 @@
-name: _features_bike_services
+name: _bike_services_features
 description: Bike services features
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

@@ -16,7 +16,7 @@ dependencies:
 
   _intent_launcher:
     path: packages/shared/features/intent_launcher
-  _features_bike_services:
+  _bike_services_features:
     path: packages/features/bike_services
   _bike_stations_features:
     path: packages/features/bike_stations

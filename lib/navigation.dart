@@ -1,7 +1,7 @@
+import 'package:_bike_services_features/bike_services_features.dart';
+import 'package:_bike_services_features/navigation_intents.dart';
 import 'package:_bike_stations_features/bike_stations_features.dart';
 import 'package:_bike_stations_features/navigation_intents.dart';
-import 'package:_features_bike_services/features_bike_services.dart';
-import 'package:_features_bike_services/navigation_intents.dart';
 import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:flutter/material.dart';
 
