@@ -1,0 +1,17 @@
+name: _location_use_cases
+description: Location use cases
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  either_dart: ^0.1.4
+  latlong2: ^0.8.1
+
+  _core:
+    path: ../../shared/all/core
+
+dev_dependencies:
+  flutter_lints: ^1.0.0

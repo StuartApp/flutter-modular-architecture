@@ -29,6 +29,13 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
+  _location_use_cases:
+    dependency: "direct main"
+    description:
+      path: "../../use_cases/location"
+      relative: true
+    source: path
+    version: "0.0.0"
   analyzer:
     dependency: transitive
     description:
@@ -190,6 +197,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
+  distance:
+    dependency: transitive
+    description:
+      name: distance
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   either_dart:
     dependency: transitive
     description:

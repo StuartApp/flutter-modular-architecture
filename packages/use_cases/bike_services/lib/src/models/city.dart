@@ -14,8 +14,8 @@ class City with _$City {
 
   const City._();
 
-  int distanceSortIndex(LatLng location) {
-    return pow(location.latitude - center.latitude, 2).toInt() +
-        pow(location.longitude - center.longitude, 2).toInt();
+  double distanceSortIndex(LatLng location) {
+    return pow(location.latitude - center.latitude, 2).toDouble() +
+        pow(location.longitude - center.longitude, 2).toDouble();
   }
 }

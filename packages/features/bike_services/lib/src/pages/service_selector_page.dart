@@ -15,38 +15,54 @@ class ServiceSelectorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        return NearServicesBloc(inject())..add(NearServicesStarted());
+        return NearServicesBloc(
+          inject(),
+          inject(),
+          inject(),
+        )..add(NearServicesStarted());
       },
       child: Scaffold(
         appBar: AppBar(
           leading: const Icon(Icons.directions_bike),
           title: const Text('Bici'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16.0),
-              Center(
-                child: Text(
-                  'Welcome to Bici!',
-                  style: Theme.of(context).textTheme.headline5,
+        body: BlocListener<NearServicesBloc, NearServicesState>(
+          listener: (context, state) {
+            state.maybeMap(
+              success: (success) {
+                if (success.showLocationPermissionWarning) {
+                  _showLocationPermissionWarning(context);
+                }
+              },
+              orElse: () => null,
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16.0),
+                Center(
+                  child: Text(
+                    'Welcome to Bici!',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 32.0),
-              Expanded(
-                child: BlocBuilder<NearServicesBloc, NearServicesState>(
-                  builder: (BuildContext context, state) {
-                    return state.map(
-                      loading: (state) => _buildStateLoading(context),
-                      success: (state) => _buildStateSuccess(context, state),
-                      failure: (state) => _buildStateFailure(context),
-                    );
-                  },
+                const SizedBox(height: 32.0),
+                Expanded(
+                  child: BlocBuilder<NearServicesBloc, NearServicesState>(
+                    builder: (BuildContext context, state) {
+                      return state.map(
+                        loading: (state) => _buildStateLoading(context),
+                        success: (state) => _buildStateSuccess(context, state),
+                        failure: (state) => _buildStateFailure(context),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -104,5 +120,17 @@ class ServiceSelectorPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _showLocationPermissionWarning(BuildContext context) {
+    final snackBar = SnackBar(
+      content: Text(
+        'Please, enable location services and grant location permissions',
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+      backgroundColor: Theme.of(context).errorColor,
+      duration: const Duration(seconds: 15),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

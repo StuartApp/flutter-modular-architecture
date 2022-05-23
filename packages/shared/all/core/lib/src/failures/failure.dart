@@ -5,6 +5,6 @@ abstract class Failure {
 
   @override
   String toString() {
-    return 'Failure{cause: $cause}';
+    return '$runtimeType{cause: ${cause.runtimeType}: $cause}';
   }
 }

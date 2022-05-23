@@ -19,21 +19,27 @@ mixin _$NearServicesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ServiceDto> services) success,
+    required TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)
+        success,
     required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,9 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ServiceDto> services) success,
+    required TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)
+        success,
     required TResult Function() failure,
   }) {
     return loading();
@@ -135,7 +143,9 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
   }) {
     return loading?.call();
@@ -145,7 +155,9 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -200,7 +212,7 @@ abstract class _$$ServiceSelectorLoadSuccessCopyWith<$Res> {
           _$ServiceSelectorLoadSuccess value,
           $Res Function(_$ServiceSelectorLoadSuccess) then) =
       __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<ServiceDto> services});
+  $Res call({List<ServiceDto> services, bool showLocationPermissionWarning});
 }
 
 /// @nodoc
@@ -219,12 +231,17 @@ class __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? services = freezed,
+    Object? showLocationPermissionWarning = freezed,
   }) {
     return _then(_$ServiceSelectorLoadSuccess(
       services: services == freezed
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
               as List<ServiceDto>,
+      showLocationPermissionWarning: showLocationPermissionWarning == freezed
+          ? _value.showLocationPermissionWarning
+          : showLocationPermissionWarning // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -232,7 +249,9 @@ class __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
-  _$ServiceSelectorLoadSuccess({required final List<ServiceDto> services})
+  _$ServiceSelectorLoadSuccess(
+      {required final List<ServiceDto> services,
+      required this.showLocationPermissionWarning})
       : _services = services;
 
   final List<ServiceDto> _services;
@@ -243,8 +262,11 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
   }
 
   @override
+  final bool showLocationPermissionWarning;
+
+  @override
   String toString() {
-    return 'NearServicesState.success(services: $services)';
+    return 'NearServicesState.success(services: $services, showLocationPermissionWarning: $showLocationPermissionWarning)';
   }
 
   @override
@@ -252,12 +274,17 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ServiceSelectorLoadSuccess &&
-            const DeepCollectionEquality().equals(other._services, _services));
+            const DeepCollectionEquality().equals(other._services, _services) &&
+            const DeepCollectionEquality().equals(
+                other.showLocationPermissionWarning,
+                showLocationPermissionWarning));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_services));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_services),
+      const DeepCollectionEquality().hash(showLocationPermissionWarning));
 
   @JsonKey(ignore: true)
   @override
@@ -269,32 +296,38 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ServiceDto> services) success,
+    required TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)
+        success,
     required TResult Function() failure,
   }) {
-    return success(services);
+    return success(services, showLocationPermissionWarning);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
   }) {
-    return success?.call(services);
+    return success?.call(services, showLocationPermissionWarning);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(services);
+      return success(services, showLocationPermissionWarning);
     }
     return orElse();
   }
@@ -336,10 +369,12 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
 
 abstract class ServiceSelectorLoadSuccess implements NearServicesState {
   factory ServiceSelectorLoadSuccess(
-          {required final List<ServiceDto> services}) =
+          {required final List<ServiceDto> services,
+          required final bool showLocationPermissionWarning}) =
       _$ServiceSelectorLoadSuccess;
 
   List<ServiceDto> get services => throw _privateConstructorUsedError;
+  bool get showLocationPermissionWarning => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ServiceSelectorLoadSuccessCopyWith<_$ServiceSelectorLoadSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -391,7 +426,9 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ServiceDto> services) success,
+    required TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)
+        success,
     required TResult Function() failure,
   }) {
     return failure();
@@ -401,7 +438,9 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
   }) {
     return failure?.call();
@@ -411,7 +450,9 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ServiceDto> services)? success,
+    TResult Function(
+            List<ServiceDto> services, bool showLocationPermissionWarning)?
+        success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {

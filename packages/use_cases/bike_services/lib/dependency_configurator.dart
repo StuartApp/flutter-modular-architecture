@@ -1,4 +1,5 @@
 import 'package:_core/core.dart';
+import 'package:_location_use_cases/location_use_cases.dart';
 import 'package:get_it/get_it.dart';
 
 import 'bike_services_use_cases.dart';
@@ -16,6 +17,9 @@ class BikeServicesDependencyConfigurator implements DependencyConfigurator {
         () => GetAllServicesImpl(getIt<ServiceRepository>()));
 
     getIt.registerFactory<GetAllServicesSortedByDistance>(
-        () => GetAllServicesSortedByDistanceImpl(getIt<GetAllServices>()));
+        () => GetAllServicesSortedByDistanceImpl(
+              getIt<GetAllServices>(),
+              getIt<GetLastKnownLocation>(),
+            ));
   }
 }

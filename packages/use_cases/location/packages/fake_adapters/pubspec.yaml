@@ -1,0 +1,16 @@
+name: _location_use_cases_fake_adapters
+description: Location use cases fake adapters
+
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  _core:
+    path: ../../../../shared/all/core
+  _location_use_cases:
+    path: ../..
+
+dev_dependencies:
+  flutter_lints: ^1.0.0

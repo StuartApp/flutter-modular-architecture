@@ -1,0 +1,4 @@
+enum Accuracy {
+  low,
+  high,
+}

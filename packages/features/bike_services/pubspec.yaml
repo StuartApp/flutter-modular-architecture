@@ -21,6 +21,8 @@ dependencies:
 
   _bike_services_use_cases:
     path: ../../use_cases/bike_services
+  _location_use_cases:
+    path: ../../use_cases/location
 
 dev_dependencies:
   flutter_test:

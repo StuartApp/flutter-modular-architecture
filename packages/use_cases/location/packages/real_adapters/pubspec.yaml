@@ -1,0 +1,22 @@
+name: _location_use_cases_real_adapters
+description: Location use cases real adapters
+
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  geolocator: ^8.2.1
+
+  _core:
+    path: ../../../../shared/all/core
+  _location_use_cases:
+    path: ../..
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
