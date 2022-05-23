@@ -5,6 +5,7 @@ import '../dtos/service_dto.dart';
 extension ServiceMapper on Service {
   ServiceDto toServiceDto() {
     return ServiceDto(
+      id: id,
       cityName: city.name,
       serviceName: name,
     );

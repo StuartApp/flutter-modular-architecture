@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'intent_launcher_impl.dart';
 import 'intents/navigation_intent.dart';
 
-typedef NavigationIntentHandler = Future<dynamic> Function(
-    BuildContext context);
+typedef NavigationIntentHandler<T> = Future<dynamic> Function(
+    BuildContext context, T intent);
 
 abstract class IntentLauncher {
   factory IntentLauncher() {
@@ -17,7 +17,7 @@ abstract class IntentLauncher {
   }
 
   void onNavigationIntent<T extends NavigationIntent>(
-      NavigationIntentHandler handler);
+      NavigationIntentHandler<T> handler);
 
   @protected
   Future<T?> handleNavigationIntent<T>(

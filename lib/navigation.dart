@@ -6,21 +6,27 @@ import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:flutter/material.dart';
 
 final _launcher = IntentLauncher()
-  ..onNavigationIntent<BikeServiceStations>((context) {
-    return Navigator.pushNamed(context, '/stations');
+  ..onNavigationIntent<BikeServiceStations>((context, intent) {
+    return Navigator.pushNamed(context, '/stations',
+        arguments: intent.serviceId);
   })
-  ..onNavigationIntent<FavoriteBikeStations>((context) {
+  ..onNavigationIntent<FavoriteBikeStations>((context, intent) {
     return Navigator.pushNamed(context, '/stations/favorites');
   });
 
-final Map<String, WidgetBuilder> routes = {
-  '/': (context) {
-    return const ServiceSelectorPage().wrapWith(_launcher);
-  },
-  '/stations': (context) {
-    return const ServiceStationsPage().wrapWith(_launcher);
-  },
-  '/stations/favorites': (context) {
-    return const FavoriteStationsPage().wrapWith(_launcher);
-  },
-};
+Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+  if ('/' == settings.name) {
+    return _route((_) => const ServiceSelectorPage().wrapWith(_launcher));
+  } else if ('/stations' == settings.name) {
+    final String serviceId = settings.arguments as String;
+    return _route(
+        (_) => ServiceStationsPage(serviceId: serviceId).wrapWith(_launcher));
+  } else if ('/stations/favorites' == settings.name) {
+    return _route((_) => const FavoriteStationsPage().wrapWith(_launcher));
+  }
+  return null;
+}
+
+Route<dynamic> _route(WidgetBuilder builder) {
+  return MaterialPageRoute(builder: builder);
+}

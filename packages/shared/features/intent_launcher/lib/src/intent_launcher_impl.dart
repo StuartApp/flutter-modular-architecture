@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'intent_launcher.dart';
 import 'inherited_intent_launcher.dart';
+import 'intent_launcher.dart';
 import 'intent_not_registered_exception.dart';
 import 'intents/navigation_intent.dart';
 
 class IntentLauncherImpl implements IntentLauncher {
-  final _navigationIntentHandlers = <Type, NavigationIntentHandler>{};
+  final _navigationIntentHandlers = <Type, dynamic>{};
 
   static Future<T?> launchNavigationIntent<T>(
     BuildContext context,
@@ -24,7 +24,7 @@ class IntentLauncherImpl implements IntentLauncher {
 
   @override
   void onNavigationIntent<T extends NavigationIntent>(
-      NavigationIntentHandler handler) {
+      NavigationIntentHandler<T> handler) {
     _navigationIntentHandlers[T] = handler;
   }
 
@@ -35,7 +35,7 @@ class IntentLauncherImpl implements IntentLauncher {
   ) {
     final handler = _navigationIntentHandlers[navigationIntent.runtimeType];
     if (handler != null) {
-      return handler(context) as Future<T?>;
+      return handler(context, navigationIntent) as Future<T?>;
     } else {
       throw IntentNotRegisteredException();
     }

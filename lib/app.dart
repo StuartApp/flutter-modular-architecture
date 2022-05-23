@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      routes: routes,
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }

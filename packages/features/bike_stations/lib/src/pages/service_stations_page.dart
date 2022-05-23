@@ -40,7 +40,10 @@ const _stations = [
 ];
 
 class ServiceStationsPage extends StatelessWidget {
-  const ServiceStationsPage({Key? key}) : super(key: key);
+  final String serviceId;
+
+  const ServiceStationsPage({Key? key, required this.serviceId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
