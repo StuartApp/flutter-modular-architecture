@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../extensions/distance_extension.dart';
-import '../models/station.dart';
+import '../dtos/station_dto.dart';
 
 class StationListItem extends StatelessWidget {
   const StationListItem({
@@ -9,7 +9,7 @@ class StationListItem extends StatelessWidget {
     required this.station,
   }) : super(key: key);
 
-  final Station station;
+  final StationDto station;
 
   @override
   Widget build(BuildContext context) {

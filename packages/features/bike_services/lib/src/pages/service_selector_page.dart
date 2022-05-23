@@ -26,45 +26,59 @@ class ServiceSelectorPage extends StatelessWidget {
           leading: const Icon(Icons.directions_bike),
           title: const Text('Bici'),
         ),
-        body: BlocListener<NearServicesBloc, NearServicesState>(
-          listener: (context, state) {
-            state.maybeMap(
-              success: (success) {
-                if (success.showLocationPermissionWarning) {
-                  _showLocationPermissionWarning(context);
-                }
-              },
-              orElse: () => null,
-            );
+        body: _buildBlocListener(
+          context: context,
+          child: _buildBody(context),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBlocListener({
+    required BuildContext context,
+    required Widget child,
+  }) {
+    return BlocListener<NearServicesBloc, NearServicesState>(
+      listener: (context, state) {
+        state.maybeMap(
+          success: (success) {
+            if (success.showLocationPermissionWarning) {
+              _showLocationPermissionWarning(context);
+            }
           },
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 16.0),
-                Center(
-                  child: Text(
-                    'Welcome to Bici!',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                ),
-                const SizedBox(height: 32.0),
-                Expanded(
-                  child: BlocBuilder<NearServicesBloc, NearServicesState>(
-                    builder: (BuildContext context, state) {
-                      return state.map(
-                        loading: (state) => _buildStateLoading(context),
-                        success: (state) => _buildStateSuccess(context, state),
-                        failure: (state) => _buildStateFailure(context),
-                      );
-                    },
-                  ),
-                ),
-              ],
+          orElse: () => null,
+        );
+      },
+      child: child,
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 16.0),
+          Center(
+            child: Text(
+              'Welcome to Bici!',
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
-        ),
+          const SizedBox(height: 32.0),
+          Expanded(
+            child: BlocBuilder<NearServicesBloc, NearServicesState>(
+              builder: (BuildContext context, state) {
+                return state.map(
+                  loading: (state) => _buildStateLoading(context),
+                  success: (state) => _buildStateSuccess(context, state),
+                  failure: (state) => _buildStateFailure(context),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

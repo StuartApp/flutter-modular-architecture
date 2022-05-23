@@ -1,6 +1,6 @@
 import 'package:distance/distance.dart';
 
-class Station {
+class StationDto {
   final String id;
   final String name;
   final int emptySlots;
@@ -10,7 +10,7 @@ class Station {
   final Distance distance;
   final bool isFavorite;
 
-  const Station({
+  const StationDto({
     required this.id,
     required this.name,
     required this.emptySlots,

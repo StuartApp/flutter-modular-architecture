@@ -1,11 +1,11 @@
 import 'package:distance/distance.dart';
 import 'package:flutter/material.dart';
 
-import '../models/station.dart';
+import '../dtos/station_dto.dart';
 import '../widgets/station_list_item.dart';
 
 const _stations = [
-  Station(
+  StationDto(
     id: 'e02c5db9e6f6fca078798c9b2d486a81',
     name: 'Jardins De Can Ferrero/Pg.De La Zona Franca',
     emptySlots: 22,
