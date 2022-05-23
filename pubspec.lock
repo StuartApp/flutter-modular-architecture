@@ -8,6 +8,20 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
+  _bike_services_use_cases:
+    dependency: "direct main"
+    description:
+      path: "packages/use_cases/bike_services"
+      relative: true
+    source: path
+    version: "0.0.0"
+  _bike_services_use_cases_real_adapters:
+    dependency: "direct main"
+    description:
+      path: "packages/use_cases/bike_services/packages/real_adapters"
+      relative: true
+    source: path
+    version: "0.0.0"
   _bike_stations_features:
     dependency: "direct main"
     description:
@@ -16,7 +30,7 @@ packages:
     source: path
     version: "0.0.0"
   _core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/shared/all/core"
       relative: true
@@ -92,6 +106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  either_dart:
+    dependency: transitive
+    description:
+      name: either_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   fake_async:
     dependency: transitive
     description:
@@ -137,6 +158,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.0"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.4"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   json_annotation:
     dependency: transitive
     description:
@@ -144,6 +186,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.5.0"
+  latlong2:
+    dependency: transitive
+    description:
+      name: latlong2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.1"
   lints:
     dependency: transitive
     description:

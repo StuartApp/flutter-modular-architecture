@@ -1,3 +1,4 @@
+import 'package:_core/core.dart';
 import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,7 @@ class ServiceSelectorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        return NearServicesBloc()..add(NearServicesStarted());
+        return NearServicesBloc(inject())..add(NearServicesStarted());
       },
       child: Scaffold(
         appBar: AppBar(
@@ -96,9 +97,7 @@ class ServiceSelectorPage extends StatelessWidget {
           const SizedBox(height: 8.0),
           ElevatedButton(
             onPressed: () {
-              context
-                  .read<NearServicesBloc>()
-                  .add(NearServicesReloadPressed());
+              context.read<NearServicesBloc>().add(NearServicesReloadPressed());
             },
             child: const Text('Reload'),
           ),

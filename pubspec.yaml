@@ -14,8 +14,16 @@ dependencies:
   cupertino_icons: ^1.0.2
   get_it: ^7.2.0
 
+  _core:
+    path: packages/shared/all/core
   _intent_launcher:
     path: packages/shared/features/intent_launcher
+
+  _bike_services_use_cases:
+    path: packages/use_cases/bike_services
+  _bike_services_use_cases_real_adapters:
+    path: packages/use_cases/bike_services/packages/real_adapters
+
   _bike_services_features:
     path: packages/features/bike_services
   _bike_stations_features:

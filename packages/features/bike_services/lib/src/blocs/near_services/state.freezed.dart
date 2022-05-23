@@ -19,21 +19,21 @@ mixin _$NearServicesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Service> services) success,
+    required TResult Function(List<ServiceDto> services) success,
     required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) =>
@@ -125,7 +125,7 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Service> services) success,
+    required TResult Function(List<ServiceDto> services) success,
     required TResult Function() failure,
   }) {
     return loading();
@@ -135,7 +135,7 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
   }) {
     return loading?.call();
@@ -145,7 +145,7 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -200,7 +200,7 @@ abstract class _$$ServiceSelectorLoadSuccessCopyWith<$Res> {
           _$ServiceSelectorLoadSuccess value,
           $Res Function(_$ServiceSelectorLoadSuccess) then) =
       __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<Service> services});
+  $Res call({List<ServiceDto> services});
 }
 
 /// @nodoc
@@ -224,7 +224,7 @@ class __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>
       services: services == freezed
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<Service>,
+              as List<ServiceDto>,
     ));
   }
 }
@@ -232,12 +232,12 @@ class __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
-  _$ServiceSelectorLoadSuccess({required final List<Service> services})
+  _$ServiceSelectorLoadSuccess({required final List<ServiceDto> services})
       : _services = services;
 
-  final List<Service> _services;
+  final List<ServiceDto> _services;
   @override
-  List<Service> get services {
+  List<ServiceDto> get services {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_services);
   }
@@ -269,7 +269,7 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Service> services) success,
+    required TResult Function(List<ServiceDto> services) success,
     required TResult Function() failure,
   }) {
     return success(services);
@@ -279,7 +279,7 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
   }) {
     return success?.call(services);
@@ -289,7 +289,7 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -335,10 +335,11 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
 }
 
 abstract class ServiceSelectorLoadSuccess implements NearServicesState {
-  factory ServiceSelectorLoadSuccess({required final List<Service> services}) =
+  factory ServiceSelectorLoadSuccess(
+          {required final List<ServiceDto> services}) =
       _$ServiceSelectorLoadSuccess;
 
-  List<Service> get services => throw _privateConstructorUsedError;
+  List<ServiceDto> get services => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ServiceSelectorLoadSuccessCopyWith<_$ServiceSelectorLoadSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -390,7 +391,7 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Service> services) success,
+    required TResult Function(List<ServiceDto> services) success,
     required TResult Function() failure,
   }) {
     return failure();
@@ -400,7 +401,7 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
   }) {
     return failure?.call();
@@ -410,7 +411,7 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Service> services)? success,
+    TResult Function(List<ServiceDto> services)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {

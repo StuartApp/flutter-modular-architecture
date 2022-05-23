@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../models/service.dart';
+import '../../models/service_dto.dart';
 
 part 'state.freezed.dart';
 
@@ -9,7 +9,7 @@ class NearServicesState with _$NearServicesState {
   factory NearServicesState.loading() = ServiceSelectorLoadInProgress;
 
   factory NearServicesState.success({
-    required List<Service> services,
+    required List<ServiceDto> services,
   }) = ServiceSelectorLoadSuccess;
 
   factory NearServicesState.failure() = ServiceSelectorLoadFailure;

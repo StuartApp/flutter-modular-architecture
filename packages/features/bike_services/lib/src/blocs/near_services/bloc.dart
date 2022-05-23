@@ -1,12 +1,14 @@
+import 'package:_bike_services_use_cases/bike_services_use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../models/service.dart';
+import '../../mappers/service_mapper.dart';
 import 'event.dart';
 import 'state.dart';
 
-class NearServicesBloc
-    extends Bloc<NearServicesEvent, NearServicesState> {
-  NearServicesBloc() : super(NearServicesState.loading()) {
+class NearServicesBloc extends Bloc<NearServicesEvent, NearServicesState> {
+  final GetAllServicesSortedByDistance _getAllServices;
+
+  NearServicesBloc(this._getAllServices) : super(NearServicesState.loading()) {
     on<NearServicesStarted>((event, emit) async {
       await _loadServices(emit);
     });
@@ -17,23 +19,15 @@ class NearServicesBloc
     });
   }
 
-  Future<void> _loadServices(Emitter<NearServicesState> emit) {
-    return Future.delayed(const Duration(seconds: 2), () {
-      emit(NearServicesState.success(services: _services));
-    });
+  Future<void> _loadServices(Emitter<NearServicesState> emit) async {
+    final result = await _getAllServices();
+    result.fold(
+      (failure) => emit(NearServicesState.failure()),
+      (services) {
+        final serviceDtos =
+            services.map((service) => service.toServiceDto()).toList();
+        emit(NearServicesState.success(services: serviceDtos));
+      },
+    );
   }
 }
-
-const _services = [
-  Service(cityName: 'Barcelona', serviceName: 'Bicing'),
-  Service(cityName: 'Albacete', serviceName: 'Onroll'),
-  Service(cityName: 'Antequera', serviceName: 'Onroll'),
-  Service(cityName: 'Bærum', serviceName: 'Bysykkel'),
-  Service(cityName: 'Badajoz', serviceName: 'Onroll'),
-  Service(cityName: 'Copenhagen', serviceName: 'Bycyklen'),
-  Service(cityName: 'Moscow', serviceName: 'Velobike'),
-  Service(cityName: 'Utrecht', serviceName: 'N-connect'),
-  Service(cityName: 'Stavanger', serviceName: 'Bysykkelen'),
-  Service(cityName: 'San Antonio, TX', serviceName: 'SWell Cycle'),
-  Service(cityName: 'Tampa, FL', serviceName: 'Coast Bike Share'),
-];
