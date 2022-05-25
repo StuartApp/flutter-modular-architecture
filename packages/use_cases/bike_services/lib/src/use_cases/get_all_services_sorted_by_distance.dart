@@ -1,8 +1,8 @@
+import 'package:_core/core.dart';
 import 'package:either_dart/either.dart';
 
-import '../failures/get_all_service_sorted_by_distance_failure.dart';
-import '../models/service.dart';
+import '../responses/sorted_services_response.dart';
 
 abstract class GetAllServicesSortedByDistance {
-  Future<Either<GetAllServiceSortedByDistanceFailure, List<Service>>> call();
+  Future<Either<NetworkFailure, SortedServicesResponse>> call();
 }

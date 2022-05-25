@@ -18,7 +18,6 @@ class ServiceSelectorPage extends StatelessWidget {
         return NearServicesBloc(
           inject(),
           inject(),
-          inject(),
         )..add(NearServicesStarted());
       },
       child: Scaffold(

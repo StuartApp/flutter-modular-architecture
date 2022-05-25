@@ -1,8 +1,9 @@
+import 'package:_core/core.dart';
 import 'package:_location_use_cases/location_use_cases.dart';
 import 'package:either_dart/either.dart';
 
 import '../../../bike_services_use_cases.dart';
-import '../../failures/get_all_service_sorted_by_distance_failure.dart';
+import '../../responses/sorted_services_response.dart';
 
 class GetAllServicesSortedByDistanceImpl
     implements GetAllServicesSortedByDistance {
@@ -16,21 +17,22 @@ class GetAllServicesSortedByDistanceImpl
   );
 
   @override
-  Future<Either<GetAllServiceSortedByDistanceFailure, List<Service>>> call() {
-    return _getLastKnownLocation().mapLeft((failure) {
-      return GetAllServiceSortedByDistanceFailure.permission(failure.cause);
-    }).thenRight((location) {
-      return _getAllServices().either(
+  Future<Either<NetworkFailure, SortedServicesResponse>> call() {
+    return _getAllServices().thenRight((services) {
+      return _getLastKnownLocation().fold(
         (failure) {
-          return GetAllServiceSortedByDistanceFailure.network(failure.cause);
+          return Right(SortedServicesResponse(services: services));
         },
-        (services) {
-          return services.toList()
-            ..sort((a, b) {
-              final aIndex = a.city.distanceToSortIndex(location);
-              final bIndex = b.city.distanceToSortIndex(location);
-              return aIndex.compareTo(bIndex);
-            });
+        (location) {
+          return Right(SortedServicesResponse(
+            services: services.toList()
+              ..sort((a, b) {
+                final aIndex = a.city.distanceToSortIndex(location);
+                final bIndex = b.city.distanceToSortIndex(location);
+                return aIndex.compareTo(bIndex);
+              }),
+            sortedFrom: location,
+          ));
         },
       );
     });
