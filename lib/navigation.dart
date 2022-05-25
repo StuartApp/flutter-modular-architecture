@@ -7,8 +7,11 @@ import 'package:flutter/material.dart';
 
 final _launcher = IntentLauncher()
   ..onNavigationIntent<BikeServiceStations>((context, intent) {
-    return Navigator.pushNamed(context, '/stations',
-        arguments: intent.serviceId);
+    return Navigator.pushNamed(
+      context,
+      '/stations',
+      arguments: [intent.serviceId, intent.serviceName],
+    );
   })
   ..onNavigationIntent<FavoriteBikeStations>((context, intent) {
     return Navigator.pushNamed(context, '/stations/favorites');
@@ -18,9 +21,15 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   if ('/' == settings.name) {
     return _route((_) => const ServiceSelectorPage().wrapWith(_launcher));
   } else if ('/stations' == settings.name) {
-    final String serviceId = settings.arguments as String;
-    return _route(
-        (_) => ServiceStationsPage(serviceId: serviceId).wrapWith(_launcher));
+    final args = settings.arguments as List<String>;
+    final serviceId = args[0];
+    final serviceName = args[1];
+    return _route((_) {
+      return ServiceStationsPage(
+        serviceId: serviceId,
+        serviceName: serviceName,
+      ).wrapWith(_launcher);
+    });
   } else if ('/stations/favorites' == settings.name) {
     return _route((_) => const FavoriteStationsPage().wrapWith(_launcher));
   }

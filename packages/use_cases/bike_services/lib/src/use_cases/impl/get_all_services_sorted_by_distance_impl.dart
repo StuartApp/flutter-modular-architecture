@@ -2,8 +2,9 @@ import 'package:_core/core.dart';
 import 'package:_location_use_cases/location_use_cases.dart';
 import 'package:either_dart/either.dart';
 
-import '../../../bike_services_use_cases.dart';
 import '../../responses/sorted_services_response.dart';
+import '../get_all_services.dart';
+import '../get_all_services_sorted_by_distance.dart';
 
 class GetAllServicesSortedByDistanceImpl
     implements GetAllServicesSortedByDistance {

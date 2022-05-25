@@ -11,9 +11,13 @@ import '../widgets/station_list_item.dart';
 
 class ServiceStationsPage extends StatelessWidget {
   final String serviceId;
+  final String serviceName;
 
-  const ServiceStationsPage({Key? key, required this.serviceId})
-      : super(key: key);
+  const ServiceStationsPage({
+    Key? key,
+    required this.serviceId,
+    required this.serviceName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,7 @@ class ServiceStationsPage extends StatelessWidget {
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      title: const Text('Bicing stations'),
+      title: Text('$serviceName stations'),
       actions: [
         IconButton(
           icon: const Icon(Icons.star),
