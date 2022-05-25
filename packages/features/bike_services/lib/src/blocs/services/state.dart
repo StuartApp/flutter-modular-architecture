@@ -5,13 +5,13 @@ import '../../dtos/service_dto.dart';
 part 'state.freezed.dart';
 
 @freezed
-class NearServicesState with _$NearServicesState {
-  factory NearServicesState.loading() = ServiceSelectorLoadInProgress;
+class ServicesState with _$ServicesState {
+  factory ServicesState.loading() = ServiceSelectorLoadInProgress;
 
-  factory NearServicesState.success({
+  factory ServicesState.success({
     required List<ServiceDto> services,
     required bool showLocationPermissionWarning,
   }) = ServiceSelectorLoadSuccess;
 
-  factory NearServicesState.failure() = ServiceSelectorLoadFailure;
+  factory ServicesState.failure() = ServiceSelectorLoadFailure;
 }

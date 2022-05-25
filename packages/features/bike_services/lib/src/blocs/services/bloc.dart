@@ -9,34 +9,34 @@ import '../../mappers/service_mapper.dart';
 import 'event.dart';
 import 'state.dart';
 
-class NearServicesBloc extends Bloc<NearServicesEvent, NearServicesState> {
+class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   final GetAllServicesSortedByDistance _getAllServicesSortedByDistance;
 
   final AskLocationPermission _askLocationPermission;
 
-  NearServicesBloc(
+  ServicesBloc(
     this._getAllServicesSortedByDistance,
     this._askLocationPermission,
-  ) : super(NearServicesState.loading()) {
+  ) : super(ServicesState.loading()) {
     on<NearServicesStarted>((event, emit) async {
       await _loadServices(emit);
     });
 
     on<NearServicesReloadPressed>((event, emit) async {
-      emit(NearServicesState.loading());
+      emit(ServicesState.loading());
       await _loadServices(emit);
     });
   }
 
-  Future<void> _loadServices(Emitter<NearServicesState> emit) {
+  Future<void> _loadServices(Emitter<ServicesState> emit) {
     return _askLocationPermission().then((_) {
       return _getAllServicesSortedByDistance().fold(
-        (failure) => emit(NearServicesState.failure()),
+        (failure) => emit(ServicesState.failure()),
         (response) {
           final serviceDtos = response.services
               .map((service) => service.toServiceDto())
               .toList();
-          emit(NearServicesState.success(
+          emit(ServicesState.success(
             services: serviceDtos,
             showLocationPermissionWarning: response.sortedFrom == null,
           ));

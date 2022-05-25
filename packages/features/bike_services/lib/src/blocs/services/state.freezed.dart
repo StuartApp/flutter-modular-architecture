@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$NearServicesState {
+mixin _$ServicesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
@@ -69,20 +69,20 @@ mixin _$NearServicesState {
 }
 
 /// @nodoc
-abstract class $NearServicesStateCopyWith<$Res> {
-  factory $NearServicesStateCopyWith(
-          NearServicesState value, $Res Function(NearServicesState) then) =
-      _$NearServicesStateCopyWithImpl<$Res>;
+abstract class $ServicesStateCopyWith<$Res> {
+  factory $ServicesStateCopyWith(
+          ServicesState value, $Res Function(ServicesState) then) =
+      _$ServicesStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NearServicesStateCopyWithImpl<$Res>
-    implements $NearServicesStateCopyWith<$Res> {
-  _$NearServicesStateCopyWithImpl(this._value, this._then);
+class _$ServicesStateCopyWithImpl<$Res>
+    implements $ServicesStateCopyWith<$Res> {
+  _$ServicesStateCopyWithImpl(this._value, this._then);
 
-  final NearServicesState _value;
+  final ServicesState _value;
   // ignore: unused_field
-  final $Res Function(NearServicesState) _then;
+  final $Res Function(ServicesState) _then;
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ abstract class _$$ServiceSelectorLoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$ServiceSelectorLoadInProgressCopyWithImpl<$Res>
-    extends _$NearServicesStateCopyWithImpl<$Res>
+    extends _$ServicesStateCopyWithImpl<$Res>
     implements _$$ServiceSelectorLoadInProgressCopyWith<$Res> {
   __$$ServiceSelectorLoadInProgressCopyWithImpl(
       _$ServiceSelectorLoadInProgress _value,
@@ -114,7 +114,7 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
 
   @override
   String toString() {
-    return 'NearServicesState.loading()';
+    return 'ServicesState.loading()';
   }
 
   @override
@@ -202,7 +202,7 @@ class _$ServiceSelectorLoadInProgress implements ServiceSelectorLoadInProgress {
   }
 }
 
-abstract class ServiceSelectorLoadInProgress implements NearServicesState {
+abstract class ServiceSelectorLoadInProgress implements ServicesState {
   factory ServiceSelectorLoadInProgress() = _$ServiceSelectorLoadInProgress;
 }
 
@@ -217,7 +217,7 @@ abstract class _$$ServiceSelectorLoadSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$$ServiceSelectorLoadSuccessCopyWithImpl<$Res>
-    extends _$NearServicesStateCopyWithImpl<$Res>
+    extends _$ServicesStateCopyWithImpl<$Res>
     implements _$$ServiceSelectorLoadSuccessCopyWith<$Res> {
   __$$ServiceSelectorLoadSuccessCopyWithImpl(
       _$ServiceSelectorLoadSuccess _value,
@@ -266,7 +266,7 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
 
   @override
   String toString() {
-    return 'NearServicesState.success(services: $services, showLocationPermissionWarning: $showLocationPermissionWarning)';
+    return 'ServicesState.success(services: $services, showLocationPermissionWarning: $showLocationPermissionWarning)';
   }
 
   @override
@@ -367,7 +367,7 @@ class _$ServiceSelectorLoadSuccess implements ServiceSelectorLoadSuccess {
   }
 }
 
-abstract class ServiceSelectorLoadSuccess implements NearServicesState {
+abstract class ServiceSelectorLoadSuccess implements ServicesState {
   factory ServiceSelectorLoadSuccess(
           {required final List<ServiceDto> services,
           required final bool showLocationPermissionWarning}) =
@@ -390,7 +390,7 @@ abstract class _$$ServiceSelectorLoadFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$ServiceSelectorLoadFailureCopyWithImpl<$Res>
-    extends _$NearServicesStateCopyWithImpl<$Res>
+    extends _$ServicesStateCopyWithImpl<$Res>
     implements _$$ServiceSelectorLoadFailureCopyWith<$Res> {
   __$$ServiceSelectorLoadFailureCopyWithImpl(
       _$ServiceSelectorLoadFailure _value,
@@ -409,7 +409,7 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
 
   @override
   String toString() {
-    return 'NearServicesState.failure()';
+    return 'ServicesState.failure()';
   }
 
   @override
@@ -497,6 +497,6 @@ class _$ServiceSelectorLoadFailure implements ServiceSelectorLoadFailure {
   }
 }
 
-abstract class ServiceSelectorLoadFailure implements NearServicesState {
+abstract class ServiceSelectorLoadFailure implements ServicesState {
   factory ServiceSelectorLoadFailure() = _$ServiceSelectorLoadFailure;
 }

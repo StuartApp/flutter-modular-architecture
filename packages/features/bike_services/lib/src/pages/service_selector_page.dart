@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../navigation_intents.dart';
-import '../blocs/near_services/bloc.dart';
-import '../blocs/near_services/event.dart';
-import '../blocs/near_services/state.dart';
+import '../blocs/services/bloc.dart';
+import '../blocs/services/event.dart';
+import '../blocs/services/state.dart';
 
 class ServiceSelectorPage extends StatelessWidget {
   const ServiceSelectorPage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class ServiceSelectorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        return NearServicesBloc(
+        return ServicesBloc(
           inject(),
           inject(),
         )..add(NearServicesStarted());
@@ -37,7 +37,7 @@ class ServiceSelectorPage extends StatelessWidget {
     required BuildContext context,
     required Widget child,
   }) {
-    return BlocListener<NearServicesBloc, NearServicesState>(
+    return BlocListener<ServicesBloc, ServicesState>(
       listener: (context, state) {
         state.maybeMap(
           success: (success) {
@@ -67,7 +67,7 @@ class ServiceSelectorPage extends StatelessWidget {
           ),
           const SizedBox(height: 32.0),
           Expanded(
-            child: BlocBuilder<NearServicesBloc, NearServicesState>(
+            child: BlocBuilder<ServicesBloc, ServicesState>(
               builder: (BuildContext context, state) {
                 return state.map(
                   loading: (state) => _buildStateLoading(context),
@@ -127,7 +127,7 @@ class ServiceSelectorPage extends StatelessWidget {
           const SizedBox(height: 8.0),
           ElevatedButton(
             onPressed: () {
-              context.read<NearServicesBloc>().add(NearServicesReloadPressed());
+              context.read<ServicesBloc>().add(NearServicesReloadPressed());
             },
             child: const Text('Reload'),
           ),
