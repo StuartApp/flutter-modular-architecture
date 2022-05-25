@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/distance_extension.dart';
 import '../dtos/station_dto.dart';
+import '../extensions/distance_extension.dart';
 
 class StationListItem extends StatelessWidget {
   const StationListItem({
@@ -30,7 +30,7 @@ class StationListItem extends StatelessWidget {
           width: 40.0,
           height: 40.0,
           child: CircularProgressIndicator(
-            value: 0.75,
+            value: station.freeBikes / (station.freeBikes + station.emptySlots),
             backgroundColor:
                 Theme.of(context).backgroundColor.withOpacity(0.30),
           ),
@@ -77,17 +77,19 @@ class StationListItem extends StatelessWidget {
   }
 
   Widget _buildSubtitleDistance() {
-    return Text.rich(
-      TextSpan(
-        children: [
-          const TextSpan(text: 'At '),
-          TextSpan(
-            text: station.distance.format(),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    );
+    return station.distance != null
+        ? Text.rich(
+            TextSpan(
+              children: [
+                const TextSpan(text: 'At '),
+                TextSpan(
+                  text: station.distance?.format() ?? 'unknown',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          )
+        : Container();
   }
 
   Widget _buildTrailing(BuildContext context) {
@@ -97,7 +99,10 @@ class StationListItem extends StatelessWidget {
         color: station.isFavorite ? Theme.of(context).primaryColor : null,
       ),
       tooltip: station.isFavorite ? 'Unmark as favorite' : 'Mark as favorite',
-      onPressed: null,
+      onPressed: () {
+        const snackBar = SnackBar(content: Text('Not implemented yet'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      },
     );
   }
 }

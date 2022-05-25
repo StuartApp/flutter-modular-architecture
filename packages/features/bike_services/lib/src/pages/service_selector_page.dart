@@ -141,7 +141,7 @@ class ServiceSelectorPage extends StatelessWidget {
     final snackBar = SnackBar(
       content: Text(
         'Please, enable location services and grant location permissions',
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context).textTheme.titleMedium,
       ),
       backgroundColor: Theme.of(context).errorColor,
       duration: const Duration(seconds: 15),

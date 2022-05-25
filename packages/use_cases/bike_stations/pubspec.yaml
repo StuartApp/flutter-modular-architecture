@@ -1,0 +1,23 @@
+name: _bike_stations_use_cases
+description: Bike stations use cases
+
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  distance: ^1.0.0
+  either_dart: ^0.1.4
+  freezed_annotation: ^2.0.3
+  latlong2: ^0.8.1
+
+  _core:
+    path: ../../shared/all/core
+  _location_use_cases:
+    path: ../../use_cases/location
+
+dev_dependencies:
+  build_runner: ^2.1.11
+  flutter_lints: ^1.0.0
+  freezed: ^2.0.3+1

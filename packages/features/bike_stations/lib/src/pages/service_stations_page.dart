@@ -1,3 +1,4 @@
+import 'package:_core/core.dart';
 import 'package:_intent_launcher/intent_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,10 @@ class ServiceStationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ServiceStationsBloc()..add(ServiceStationsStarted()),
+      create: (context) => ServiceStationsBloc(
+        serviceId,
+        inject(),
+      )..add(ServiceStationsStarted()),
       child: Scaffold(
         appBar: _buildAppBar(context),
         body: _buildBlocListener(
@@ -110,7 +114,7 @@ class ServiceStationsPage extends StatelessWidget {
     final snackBar = SnackBar(
       content: Text(
         'Please, enable location services and grant location permissions',
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context).textTheme.titleMedium,
       ),
       backgroundColor: Theme.of(context).errorColor,
       duration: const Duration(seconds: 15),

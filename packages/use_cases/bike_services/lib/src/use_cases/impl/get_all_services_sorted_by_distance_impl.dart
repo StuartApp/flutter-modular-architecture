@@ -27,8 +27,8 @@ class GetAllServicesSortedByDistanceImpl
         (services) {
           return services.toList()
             ..sort((a, b) {
-              final aIndex = a.city.distanceSortIndex(location);
-              final bIndex = b.city.distanceSortIndex(location);
+              final aIndex = a.city.distanceToSortIndex(location);
+              final bIndex = b.city.distanceToSortIndex(location);
               return aIndex.compareTo(bIndex);
             });
         },

@@ -25,10 +25,12 @@ dependencies:
     path: packages/use_cases/bike_services
   _bike_services_use_cases_real_adapters:
     path: packages/use_cases/bike_services/packages/real_adapters
+  _bike_stations_use_cases:
+    path: packages/use_cases/bike_stations
+  _bike_stations_use_cases_real_adapters:
+    path: packages/use_cases/bike_stations/packages/real_adapters
   _location_use_cases:
     path: packages/use_cases/location
-  #_location_use_cases_fake_adapters:
-  #  path: packages/use_cases/location/packages/fake_adapters
   _location_use_cases_real_adapters:
     path: packages/use_cases/location/packages/real_adapters
 

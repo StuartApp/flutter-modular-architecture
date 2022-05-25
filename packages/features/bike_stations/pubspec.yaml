@@ -19,6 +19,8 @@ dependencies:
   _intent_launcher:
     path: ../../shared/features/intent_launcher
 
+  _bike_stations_use_cases:
+    path: ../../use_cases/bike_stations
   _location_use_cases:
     path: ../../use_cases/location
 
