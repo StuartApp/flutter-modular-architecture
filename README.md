@@ -9,3 +9,15 @@ in Flutter projects at [Stuart](https://stuart.com/blog/tech/).
 
 This app relies on the public [API](http://api.citybik.es/v2/) provided by
 [CityBikes](https://citybik.es/).
+
+# How to run it
+
+1. Install all dependencies:
+   ```
+   make pub_get_all
+   ```
+2. With a device connected run the app:
+   ```
+   flutter run
+   ```
+Please check [Makefile](Makefile) to discover all the available `make` commands.
